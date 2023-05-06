@@ -1,0 +1,28 @@
+// Fungsi dari entitas RegisteredUser adalah untuk menampung data
+// pengguna yang baru saja dimasukkan ke database.
+// Data di dalamnya berupa id, username, dan fullname user
+
+class RegisteredUser {
+  constructor(payload) {
+    this._verifyPayload(payload);
+    const { id, username, fullname } = payload;
+    this.id = id;
+    this.username = username;
+    this.fullname = fullname;
+  }
+
+  _verifyPayload({ id, username, fullname }) {
+    if (!id || !username || !fullname) {
+      throw new Error("REGISTERED_USER.NOT_CONTAIN_NEEDED_PROPERTY");
+    }
+    if (
+      typeof id !== "string" ||
+      typeof username !== "string" ||
+      typeof fullname !== "string"
+    ) {
+      throw new Error("REGISTERED_USER.NOT_MEET_DATA_TYPE_SPECIFICATION");
+    }
+  }
+}
+
+module.exports = RegisteredUser;
