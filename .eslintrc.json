@@ -18,6 +18,9 @@
     "lines-between-class-members": "off",
     "class-methods-use-this": "off",
     "import/no-extraneous-dependencies": "off",
-    "no-console": "off"
+    "no-console": "off",
+    "implicit-arrow-linebreak": "off",
+    "function-paren-newline": "off",
+    "no-unused-vars": "off"
   }
 }

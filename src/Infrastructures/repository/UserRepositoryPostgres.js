@@ -1,6 +1,7 @@
 const RegisteredUser = require("../../Domains/users/entities/RegisteredUser.js");
 const UserRepository = require("../../Domains/users/UserRepository");
 const InvariantError = require("../../Commons/exceptions/InvariantError");
+const NotFoundError = require("../../Commons/exceptions/NotFoundError");
 
 class UserRepositoryPostgres extends UserRepository {
   constructor(pool, idGenerator) {
@@ -34,6 +35,32 @@ class UserRepositoryPostgres extends UserRepository {
     const result = await this._pool.query(query);
 
     return new RegisteredUser({ ...result.rows[0] });
+  }
+
+  async getPasswordByUsername(username) {
+    const query = {
+      text: "SELECT password FROM users WHERE username = $1",
+      values: [username],
+    };
+
+    const result = await this._pool.query(query);
+    if (!result.rowCount) {
+      throw new InvariantError("username tidak tersedia");
+    }
+
+    return result.rows[0].password;
+  }
+
+  async getIdByUsername(username) {
+    const query = {
+      text: "SELECT id FROM users WHERE username = $1",
+      values: [username],
+    };
+    const result = await this._pool.query(query);
+    if (!result.rowCount) {
+      throw new InvariantError("user tidak tersedia");
+    }
+    return result.rows[0].id;
   }
 }
 

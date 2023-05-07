@@ -19,7 +19,6 @@ const UsersTabelTestHelper = {
       text: "SELECT * FROM users WHERE id = $1",
       values: [id],
     };
-
     const result = await pool.query(query);
     return result.rows;
   },
