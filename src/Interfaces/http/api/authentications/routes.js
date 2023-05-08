@@ -14,6 +14,14 @@ const routes = (handler) => [
     path: "/authentications",
     handler: handler.deleteAuthenticationHandler,
   },
+  {
+    method: "GET",
+    path: "/check",
+    options: {
+      auth: "forumapistarterproject_jwt",
+    },
+    handler: handler.getCheck,
+  },
 ];
 
 module.exports = routes;
