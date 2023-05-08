@@ -39,6 +39,22 @@ describe("DomainErrorTranslator", () => {
         "tidak dapat membuat user baru karena username mengandung karakter terlarang"
       )
     );
+    expect(
+      DomainErrorTranslator.translate(
+        new Error("NEW_AUTH.NOT_CONTAIN_NEEDED_PROPERTY")
+      )
+    ).toStrictEqual(
+      new InvariantError(
+        "tidak dapat login karena property yang dibuthkan tidak lengkap"
+      )
+    );
+    expect(
+      DomainErrorTranslator.translate(
+        new Error("NEW_AUTH.NOT_MEET_DATA_TYPE_SPECIFICATION")
+      )
+    ).toStrictEqual(
+      new InvariantError("tidak dapat login karena tipe data tidak sesuai")
+    );
   });
 
   it("should return original error when error message is not needed to translate", () => {

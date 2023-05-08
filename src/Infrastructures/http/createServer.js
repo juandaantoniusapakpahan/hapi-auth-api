@@ -15,7 +15,10 @@ const createServer = async (container) => {
       plugin: users,
       options: { container },
     },
-    { plugin: authentications, options: { container } },
+    {
+      plugin: authentications,
+      options: { container },
+    },
   ]);
 
   server.ext("onPreResponse", (request, h) => {

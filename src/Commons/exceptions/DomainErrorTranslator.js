@@ -19,6 +19,12 @@ DomainErrorTranslator._directories = {
   "REGISTER_USER.USERNAME_CONTAIN_RESTRICTED_CHARACTER": new InvariantError(
     "tidak dapat membuat user baru karena username mengandung karakter terlarang"
   ),
+  "NEW_AUTH.NOT_CONTAIN_NEEDED_PROPERTY": new InvariantError(
+    "tidak dapat login karena property yang dibuthkan tidak lengkap"
+  ),
+  "NEW_AUTH.NOT_MEET_DATA_TYPE_SPECIFICATION": new InvariantError(
+    "tidak dapat login karena tipe data tidak sesuai"
+  ),
 };
 
 module.exports = DomainErrorTranslator;
