@@ -53,10 +53,6 @@ class AuthenticationsHandler {
       },
     };
   }
-
-  getCheck() {
-    return "Hello";
-  }
 }
 
 module.exports = AuthenticationsHandler;

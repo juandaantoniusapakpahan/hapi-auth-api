@@ -21,22 +21,6 @@ const createServer = async (container) => {
     },
   ]);
 
-  server.auth.strategy("forumapistarterproject_jwt", "jwt", {
-    keys: process.env.ACCESS_TOKEN_KEY,
-    verify: {
-      açud: false,
-      iss: false,
-      sub: false,
-      maxAgeSec: process.env.ACCESS_TOKEN_AGE,
-    },
-    validate: (artifacts) => ({
-      isValid: true,
-      credentials: {
-        id: artifacts.decoded.payload.id,
-      },
-    }),
-  });
-
   await server.register([
     {
       plugin: users,
